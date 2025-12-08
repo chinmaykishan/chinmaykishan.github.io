@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yudhvik | Tech Enthusiast</title>
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-soft: #0b1020;
+      --card: #101426;
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --border: #1f2937;
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #111827 0, #020617 50%, #000 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* Layout */
+    .wrapper {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 16px 18px 80px;
+    }
+
+    /* Glassy Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(3, 7, 18, 0.96),
+        rgba(3, 7, 18, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-circle {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #a5b4fc, #4f46e5);
+      box-shadow: 0 0 20px rgba(129, 140, 248, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #e5e7eb;
+    }
+
+    .logo-text-main {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, #6366f1, #22c55e);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.9fr);
+      gap: 30px;
+      align-items: center;
+      padding-top: 40px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 24px;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(79, 70, 229, 0.4);
+      background: radial-gradient(circle at top left, #111827, #020617);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 14px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 6vw, 40px);
+      line-height: 1.1;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(to right, #6366f1, #22c55e);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 460px;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      border-radius: 999px;
+      font-size: 13px;
+      padding: 9px 15px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #22c55e);
+      color: #f9fafb;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.45);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px rgba(79, 70, 229, 0.55);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: #1f2937;
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      border-color: #374151;
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-meta-item span {
+      display: block;
+      font-size: 13px;
+      color: #e5e7eb;
+      font-weight: 500;
+    }
+
+    /* Right hero card */
+    .hero-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      padding: 18px 18px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-orbit {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.2);
+      top: -60px;
+      right: -40px;
+    }
+
+    .hero-card-orbit::after {
+      content: "";
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 18px rgba(34, 197, 94, 0.9);
+      top: 28px;
+      left: 40px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-name {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .hero-role {
+      font-size: 13px;
+      color: #9ca3af;
+      margin-bottom: 14px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+      font-size: 11px;
+    }
+
+    .pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    .pill.highlight {
+      border-color: rgba(79, 70, 229, 0.8);
+      background: radial-gradient(circle at top left, #111827, #020617);
+    }
+
+    .hero-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .mini-card {
+      border-radius: 16px;
+      padding: 7px 8px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .mini-card span {
+      display: block;
+      font-size: 13px;
+      color: #e5e7eb;
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .hero-card-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      margin-right: 5px;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Sections */
+    section {
+      margin-top: 42px;
+    }
+
+    section h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    section h2 span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    section p {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    /* Skills tags */
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text);
+    }
+
+    /* Cards grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 12px 12px 11px;
+      font-size: 12px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        border-color 0.15s ease, background 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79, 70, 229, 0.8);
+      background: radial-gradient(circle at top left, #020617, #020617);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+    }
+
+    .card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .card p {
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      font-size: 10px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .card-link {
+      font-size: 11px;
+      text-decoration: none;
+      color: #a5b4fc;
+    }
+
+    .card-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 10px;
+    }
+
+    .card-pill {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid #111827;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 780px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.95);
+      padding: 14px 12px 12px;
+      font-size: 12px;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .contact-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid #111827;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .contact-item span {
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .contact-item a {
+      font-size: 11px;
+      text-decoration: none;
+      color: #a5b4fc;
+      white-space: nowrap;
+    }
+
+    .contact-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 40px;
+      font-size: 11px;
+      color: #4b5563;
+      border-top: 1px solid #111827;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      text-decoration: none;
+      color: #6b7280;
+    }
+
+    .footer-link:hover {
+      color: #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-circle">Y</div>
+        <div>
+          <div class="logo-text-main">Yudhvik</div>
+          <div class="logo-text-sub">Tech Enthusiast · Student</div>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div>
+        <div class="badge">
+          <div class="badge-dot"></div>
+          Available for collaboration · Learning & building
+        </div>
+
+        <h1 class="hero-title">
+          Building my <span>tech journey</span> one project at a time.
+        </h1>
+
+        <p class="hero-subtitle">
+          I’m a student & tech enthusiast exploring development, problem-solving,
+          and real-world projects. I like turning ideas into clean, working
+          products and learning something new from every build.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View my projects ↗</a>
+          <a href="#contact" class="btn-ghost">Let’s connect</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span>Beginner friendly</span>
+            Documenting everything I learn.
+          </div>
+          <div class="hero-meta-item">
+            <span>Open source</span>
+            Code hosted on GitHub.
+          </div>
+        </div>
+      </div>
+
+      <!-- Right hero card -->
+      <aside class="hero-card">
+        <div class="hero-card-orbit"></div>
+        <div class="hero-tag">Profile Snapshot</div>
+        <div class="hero-name">Yudhvik</div>
+        <div class="hero-role">CS / Tech Enthusiast · Self-learner</div>
+
+        <div class="hero-pills">
+          <div class="pill highlight">Web Dev</div>
+          <div class="pill">Projects on GitHub</div>
+          <div class="pill">Learning every day</div>
+          <div class="pill">Clean UI lover</div>
+        </div>
+
+        <div class="hero-mini-grid">
+          <div class="mini-card">
+            <span>3+</span>
+            small projects
+          </div>
+          <div class="mini-card">
+            <span>∞</span>
+            curiosity
+          </div>
+          <div class="mini-card">
+            <span>2025</span>
+            portfolio v1
+          </div>
+        </div>
+
+        <div class="hero-card-footer">
+          <div>
+            <span class="status-dot"></span>
+            Currently: Exploring web dev & CS fundamentals
+          </div>
+          <div>Timezone: IST (UTC+5:30)</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>
+        <span>About</span>
+        Quick intro
+      </h2>
+      <p>
+        I’m a curious learner who enjoys understanding how things work — from
+        apps and websites to real-world systems. My current focus is on
+        building small, useful projects and improving my problem-solving
+        mindset. I believe in learning by doing, sharing what I build, and
+        improving a little every day.
+      </p>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2>
+        <span>Skills</span>
+        What I’m learning & using
+      </h2>
+      <p>
+        These are technologies and concepts I’m exploring right now. This list
+        will keep growing as I keep shipping more projects.
+      </p>
+      <div class="chip-row">
+        <div class="chip">HTML & CSS</div>
+        <div class="chip">Basic JavaScript</div>
+        <div class="chip">Responsive Design</div>
+        <div class="chip">Git & GitHub</div>
+        <div class="chip">GitHub Pages</div>
+        <div class="chip">Problem Solving</div>
+        <div class="chip">Learning Mindset</div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>
+        <span>Projects</span>
+        Things I’ve built
+      </h2>
+      <p>
+        A few small, focused projects that helped me practice development,
+        design, and thinking like a builder. I’m still early in my journey, so
+        expect simple, clean and improving work.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-tag">Web App</div>
+          <div class="card-title">Unit Converter</div>
+          <p>
+            Simple unit converter for length, weight and temperature with a
+            clean UI. Built to practice HTML, CSS and basic JavaScript.
+          </p>
+          <div class="card-pill-row">
+            <div class="card-pill">HTML</div>
+            <div class="card-pill">CSS</div>
+            <div class="card-pill">JS</div>
+          </div>
+          <div class="card-meta">
+            <span>Goal: solve daily small problems</span>
+            <a href="#" class="card-link">GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Web</div>
+          <div class="card-title">Personal Portfolio v1</div>
+          <p>
+            This website itself – a minimal, dark portfolio hosted on GitHub
+            Pages to show my work and learning journey.
+          </p>
+          <div class="card-pill-row">
+            <div class="card-pill">Responsive</div>
+            <div class="card-pill">Dark UI</div>
+          </div>
+          <div class="card-meta">
+            <span>Deployed on GitHub.io</span>
+            <a href="#" class="card-link">Live demo ↗</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Idea</div>
+          <div class="card-title">MyCollegeHub (concept)</div>
+          <p>
+            Concept for a student hub with notes sharing, announcements, and
+            basic tools for college students.
+          </p>
+          <div class="card-pill-row">
+            <div class="card-pill">Planning</div>
+            <div class="card-pill">Wireframing</div>
+          </div>
+          <div class="card-meta">
+            <span>Future: full-stack version</span>
+            <span>Work in progress</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>
+        <span>Contact</span>
+        Let’s connect
+      </h2>
+      <p>
+        Open to collaborating on beginner-friendly projects, learning together,
+        or just connecting with people in tech. Feel free to reach out.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3 style="font-size: 14px; margin-bottom: 6px;">Say hi</h3>
+          <div class="contact-row">
+            <div class="contact-item">
+              <div>
+                Email<br />
+                <span>youremail@example.com</span>
+              </div>
+              <a href="mailto:youremail@example.com">Write ↗</a>
+            </div>
+            <div class="contact-item">
+              <div>
+                GitHub<br />
+                <span>github.com/your-username</span>
+              </div>
+              <a href="https://github.com/your-username" target="_blank"
+                >Open ↗</a
+              >
+            </div>
+            <div class="contact-item">
+              <div>
+                LinkedIn<br />
+                <span>linkedin.com/in/your-profile</span>
+              </div>
+              <a href="https://linkedin.com/in/your-profile" target="_blank"
+                >View ↗</a
+              >
+            </div>
+          </div>
+          <div class="contact-note">
+            Tip: replace the placeholders above with your real email, GitHub,
+            and LinkedIn profile links.
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3 style="font-size: 14px; margin-bottom: 6px;">Status</h3>
+          <p style="font-size: 12px; color: var(--muted);">
+            • Learning web dev basics<br />
+            • Exploring project ideas that solve real problems<br />
+            • Slowly building a solid portfolio
+          </p>
+          <p class="contact-note">
+            If you’re also learning, feel free to connect — we can share
+            resources, code, and ideas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="year"></span> · Built by Yudhvik</div>
+      <div>
+        <a href="#top" class="footer-link">Back to top ↑</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
