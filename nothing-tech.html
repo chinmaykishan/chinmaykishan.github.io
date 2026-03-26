@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nothing.tech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <span class="logo">NOTHING (R)</span>
+    <div style="width: 36px;"></div>
+  </header>
+
+  <!-- Full Screen Menu -->
+  <div class="fullscreen-menu" id="menu">
+    <button class="menu-close" onclick="toggleMenu()" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="logo" style="top: 16px;">NOTHING (R)</div>
+    <nav class="menu-nav">
+      <a href="#" onclick="toggleMenu()">SHOP ALL</a>
+      <a href="#" onclick="toggleMenu()">PHONES</a>
+      <a href="#" onclick="toggleMenu()">AUDIO</a>
+      <a href="#" onclick="toggleMenu()">WATCHES</a>
+      <a href="#" onclick="toggleMenu()">ACCESSORIES</a>
+      <a href="#" onclick="toggleMenu()">CMF</a>
+    </nav>
+    <div class="menu-footer">
+      <a href="#" onclick="toggleMenu()">ACCOUNT</a>
+      <a href="#support" onclick="toggleMenu()">SUPPORT</a>
+      <a href="#" onclick="toggleMenu()">COMMUNITY</a>
+      <a href="#" onclick="toggleMenu()">PLAYGROUND</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="section hero-section">
+    <div class="section-bg dotted-grid-light"></div>
+    <div class="section-content">
+      <img src="images/hero-phones.jpg" alt="Nothing Phones" class="product-image product-image-large reveal" id="hero-img">
+      <div style="margin-top: 40px;">
+        <div class="product-card reveal" style="transition-delay: 0.3s;">
+          <div class="card-text">
+            <h3 class="card-title">It's metal now</h3>
+            <p class="card-subtitle">phone (4a) pro</p>
+          </div>
+          <div class="card-right">
+            <img src="images/phone-black.jpg" alt="Phone thumbnail" class="card-thumbnail">
+            <a href="#" class="card-btn">PRE-ORDER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phone 4a Collection -->
+  <section class="section">
+    <div class="section-bg dotted-grid-light"></div>
+    <div class="section-content">
+      <img src="images/phones-collection.jpg" alt="Phone 4a Collection" class="product-image reveal">
+      <div style="margin-top: 40px;">
+        <div class="product-card reveal" style="transition-delay: 0.2s;">
+          <div class="card-text">
+            <h3 class="card-title">Built different</h3>
+            <p class="card-subtitle">phone (4a)</p>
+          </div>
+          <div class="card-right">
+            <img src="images/phone-black.jpg" alt="Phone thumbnail" class="card-thumbnail">
+            <a href="#" class="card-btn">DISCOVER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phone 3a Section (Dark) -->
+  <section class="section dark-section">
+    <div class="section-bg dotted-grid-dark"></div>
+    <div class="section-content">
+      <img src="images/phone-3a.jpg" alt="Phone 3a" class="product-image reveal" style="max-width: 400px;">
+      <div style="margin-top: 40px;">
+        <div class="product-card product-card-dark reveal" style="transition-delay: 0.2s;">
+          <div class="card-text">
+            <h3 class="card-title">Come to Play</h3>
+            <p class="card-subtitle">phone (3a)</p>
+          </div>
+          <div class="card-right">
+            <img src="images/phone-black.jpg" alt="Phone thumbnail" class="card-thumbnail" style="filter: brightness(0.8);">
+            <a href="#" class="card-btn card-btn-dark">DISCOVER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Headphones Section -->
+  <section class="section" style="background: linear-gradient(180deg, #f9f9f9 0%, #fff 100%);">
+    <div class="section-bg dotted-grid-light"></div>
+    <div class="section-content">
+      <div class="floating">
+        <img src="images/headphones.jpg" alt="Nothing Headphones" class="product-image reveal" style="max-width: 500px;">
+      </div>
+      <div style="margin-top: 40px;">
+        <div class="product-card reveal" style="transition-delay: 0.2s;">
+          <div class="card-text">
+            <h3 class="card-title">Come to Play</h3>
+            <p class="card-subtitle">headphones (1)</p>
+          </div>
+          <div class="card-right">
+            <img src="images/headphones.jpg" alt="Headphones thumbnail" class="card-thumbnail">
+            <a href="#" class="card-btn">DISCOVER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Phone 3a Lite Section -->
+  <section class="section">
+    <div class="section-bg dotted-grid-light"></div>
+    <div class="section-content">
+      <img src="images/phones-floating.jpg" alt="Phone 3a Lite" class="product-image reveal">
+      <div style="margin-top: 40px;">
+        <div class="product-card reveal" style="transition-delay: 0.2s;">
+          <div class="card-text">
+            <h3 class="card-title">Light up the everyday</h3>
+            <p class="card-subtitle">phone (3a) lite</p>
+          </div>
+          <div class="card-right">
+            <img src="images/phone-black.jpg" alt="Phone thumbnail" class="card-thumbnail">
+            <a href="#" class="card-btn">DISCOVER</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="support">
+    <div class="section-bg dotted-grid-dark"></div>
+    <div class="footer-content">
+      <nav class="footer-nav">
+        <a href="#" class="reveal">SHOP ALL</a>
+        <a href="#" class="reveal" style="transition-delay: 0.05s;">PHONES</a>
+        <a href="#" class="reveal" style="transition-delay: 0.1s;">AUDIO</a>
+        <a href="#" class="reveal" style="transition-delay: 0.15s;">WATCHES</a>
+        <a href="#" class="reveal" style="transition-delay: 0.2s;">ACCESSORIES</a>
+        <a href="#" class="reveal" style="transition-delay: 0.25s;">CMF</a>
+      </nav>
+      <div class="footer-actions">
+        <a href="#" class="footer-action-btn reveal" style="transition-delay: 0.3s;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span>SUPPORT</span>
+        </a>
+        <a href="#" class="footer-action-btn reveal" style="transition-delay: 0.35s;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>NEWSLETTER</span>
+        </a>
+        <a href="#" class="footer-action-btn reveal" style="transition-delay: 0.4s;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>STORE: INDIA</span>
+        </a>
+        <a href="#" class="footer-action-btn reveal" style="transition-delay: 0.45s;">
+          <span>LANGUAGES: EN</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <a href="#">PLAYGROUND</a>
+      <a href="#">CONTACT</a>
+      <a href="#">CAREERS</a>
+      <a href="#">LEGAL</a>
+      <a href="#">PRIVACY</a>
+      <a href="#">INSTAGRAM</a>
+      <a href="#">YOUTUBE</a>
+      <a href="#">X</a>
+      <a href="#">TIKTOK</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
